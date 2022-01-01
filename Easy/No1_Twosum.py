@@ -9,4 +9,4 @@ class Solution:
                 return [mymap[diff], i]
             else:
                 mymap[n] = i 
-         
+#update

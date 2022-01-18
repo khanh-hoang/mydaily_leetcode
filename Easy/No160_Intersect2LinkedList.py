@@ -8,20 +8,23 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        pointer1 = headA
-        pointer2 = headB
-        
-        while pointer1 != pointer2:
-            if pointer1:
-                pointer1 = pointer1.next
-            else:
-                pointer1 = headB
-            
-            if pointer2:
-                pointer2 = pointer2.next
-            else:
-                pointer2 = headA
-            
-            
-                
-        return pointer1
+        """
+        The ptrA will go through a + c + b 
+        The ptrB will go through b + c + a
+        With a,b is the exclusive part of linked listA, listB
+        And c is the common part
+        """
+
+        pA = headA
+        pB = headB
+        while pA != pB:
+            pA = pA.next if pA else headB
+            pB = pB.next if pB else headA  
+        return pA
+
+        """
+        The second solution is getting lenA and lenB, get diff abs(lenA-lenB)
+        Jump the pointer of the longer list diff step
+        Set the pointer to head of shorter list
+        Jump together until they get the same value
+        """
